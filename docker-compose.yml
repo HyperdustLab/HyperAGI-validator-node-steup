@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  arbitrum-node:
+    image: offchainlabs/nitro-node:v2.3.3-6a1c1a7
+    container_name: validator-node
+    ports:
+      - "${WS_PORT}:${WS_PORT}"
+      - "8549:8549"
+    volumes:
+      - /home/ubuntu/arbitrum:/home/user/.arbitrum
+      - ./chain-info.json:/home/user/chain-info.json
+    env_file:
+      - ./validator_node.env
+    command: >
+      --parent-chain.connection.url=${PARENT_CHAIN_URL}
+      --chain.info-json="${CHAIN_INFO_JSON}"
+      --node.staker.enable=true
+      --node.staker.strategy=Watchtower
+      --execution.forwarding-target=${FORWARDING_TARGET}
+      --chain.id=${CHAIN_ID}
+      --node.data-availability.enable
+      --node.data-availability.rest-aggregator.enable
+      --node.data-availability.rest-aggregator.urls=${REST_AGGREGATOR_URLS}
+      --ws.port=${WS_PORT}
+      --ws.addr=${WS_ADDR}
+      --ws.origins=${WS_ORIGINS}

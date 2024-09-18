@@ -1,0 +1,48 @@
+[
+    {
+        "chain-id": 21985375584,
+        "parent-chain-id": 42161,
+        "parent-chain-is-arbitrum": true,
+        "chain-name": "Tagtal Orbit Testnet",
+        "chain-config": {
+            "homesteadBlock": 0,
+            "daoForkBlock": null,
+            "daoForkSupport": true,
+            "eip150Block": 0,
+            "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "eip155Block": 0,
+            "eip158Block": 0,
+            "byzantiumBlock": 0,
+            "constantinopleBlock": 0,
+            "petersburgBlock": 0,
+            "istanbulBlock": 0,
+            "muirGlacierBlock": 0,
+            "berlinBlock": 0,
+            "londonBlock": 0,
+            "clique": {
+                "period": 0,
+                "epoch": 0
+            },
+            "arbitrum": {
+                "EnableArbOS": true,
+                "AllowDebugPrecompiles": false,
+                "DataAvailabilityCommittee": true,
+                "InitialArbOSVersion": 20,
+                "GenesisBlockNum": 0,
+                "MaxCodeSize": 24576,
+                "MaxInitCodeSize": 49152,
+                "InitialChainOwner": "0x6F9a1d8233A747a581594ee82071B2e3D77eA781"
+            },
+            "chainId": 21985375584
+        },
+        "rollup": {
+            "bridge": "0xbbC42602A1f3F5dC8B42656282ca3615726a3C8e",
+            "inbox": "0x7fe8D4a67E8B0Ce6bb47bb8847C1F59c43A267Ce",
+            "sequencer-inbox": "0x831B4a640020C8a6B395abcf914b5B9D8f688731",
+            "rollup": "0x25D8f07861DE9A6b2d902F30C0911608b6fbae0d",
+            "validator-utils": "0x6c21303F5986180B1394d2C89f3e883890E2867b",
+            "validator-wallet-creator": "0x2b0E04Dc90e3fA58165CB41E2834B44A56E766aF",
+            "deployed-at": 240704404
+        }
+    }
+]
