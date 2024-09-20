@@ -1,27 +1,26 @@
 version: '3.8'
-
 services:
   arbitrum-node:
     image: offchainlabs/nitro-node:v2.3.3-6a1c1a7
-    container_name: validator-node
+    container_name: arbitrum-node
     ports:
-      - "${WS_PORT}:${WS_PORT}"
-      - "8549:8549"
+      - '8449:8449'
     volumes:
       - /home/ubuntu/arbitrum:/home/user/.arbitrum
-      - ./chain-info.json:/home/user/chain-info.json
-    env_file:
-      - ./validator_node.env
     command: >
-      --parent-chain.connection.url=${PARENT_CHAIN_URL}
-      --chain.info-json="${CHAIN_INFO_JSON}"
+      --parent-chain.connection.url=https://arb1.arbitrum.io/rpc
+      --chain.info-json="[{\"chain-id\":73871202146,\"parent-chain-id\":42161,\"parent-chain-is-arbitrum\":true,\"chain-name\":\"Tagtal Orbit Devnet\",\"chain-config\":{\"homesteadBlock\":0,\"daoForkBlock\":null,\"daoForkSupport\":true,\"eip150Block\":0,\"eip150Hash\":\"0x0000000000000000000000000000000000000000000000000000000000000000\",\"eip155Block\":0,\"eip158Block\":0,\"byzantiumBlock\":0,\"constantinopleBlock\":0,\"petersburgBlock\":0,\"istanbulBlock\":0,\"muirGlacierBlock\":0,\"berlinBlock\":0,\"londonBlock\":0,\"clique\":{\"period\":0,\"epoch\":0},\"arbitrum\":{\"EnableArbOS\":true,\"AllowDebugPrecompiles\":false,\"DataAvailabilityCommittee\":true,\"InitialArbOSVersion\":20,\"GenesisBlockNum\":0,\"MaxCodeSize\":24576,\"MaxInitCodeSize\":49152,\"InitialChainOwner\":\"0xF851B3cF1B482ce699FD6DcB329D713b6D55532c\"},\"chainId\":73871202146},\"rollup\":{\"bridge\":\"0x106DC4aB4161698278dC511d067B670224772C15\",\"inbox\":\"0x8FF3C239aC2f9EDE4Fd725cC97eD3D6a854e4Ad0\",\"sequencer-inbox\":\"0xebd9D826Da330f1eB28361945EcC5DD3451918d4\",\"rollup\":\"0xbaAc5E18720bB996a76Fe2F411f9032a62774c3b\",\"validator-utils\":\"0x6c21303F5986180B1394d2C89f3e883890E2867b\",\"validator-wallet-creator\":\"0x2b0E04Dc90e3fA58165CB41E2834B44A56E766aF\",\"deployed-at\":255117971}}]"
       --node.staker.enable=true
       --node.staker.strategy=Watchtower
-      --execution.forwarding-target=${FORWARDING_TARGET}
-      --chain.id=${CHAIN_ID}
+      --execution.forwarding-target=https://tagtal-rpc.hyperagi.network
+      --chain.id=73871202146
       --node.data-availability.enable
       --node.data-availability.rest-aggregator.enable
-      --node.data-availability.rest-aggregator.urls=${REST_AGGREGATOR_URLS}
-      --ws.port=${WS_PORT}
-      --ws.addr=${WS_ADDR}
-      --ws.origins=${WS_ORIGINS}
+      --node.data-availability.rest-aggregator.urls="http://13.202.43.45:9877"
+      --ws.port=8448
+      --ws.addr=0.0.0.0
+      --ws.origins=*
+      --http.port=8449
+      --http.addr=0.0.0.0
+      --http.api=eth,net,web3
+      --http.corsdomain=*
